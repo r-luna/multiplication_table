@@ -6,11 +6,12 @@
         <script data-require="angular.js@1.3.10" data-semver="1.3.10" src="https://code.angularjs.org/1.3.10/angular.js"></script>
         <script type="text/javascript" src="scripts/app.js"></script>
     </head>
-    <body>
-        <table ng-controller="MultiplicationCtrl">
-            <tr ng-repeat="numberA in numbers">
-                <td ng-repeat="numberB in numbers">
-                    {{ numberA * numberB }}
+    <body ng-controller="MultiplicationCtrl" initial-number-limit="10">
+        <input type="number" ng-model="numberLimit" placeholder="Enter a number" />
+        <table>
+            <tr ng-repeat="numberA in numbers()">
+                <td ng-repeat="numberB in numbers()">
+                    {{ compute(numberA, numberB) }}
                 </td>
             </tr>
         </table>
